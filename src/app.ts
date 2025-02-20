@@ -21,9 +21,13 @@ const saludo = addKeyword(EVENTS.WELCOME)
       contadorsaludo[ctx.from] = 1;  // Mantener el contador
     } else if (contadorsaludo[ctx.from] === 1) {  // Corregido
       await flowDynamic(`No encontré "MENU" en tu respuesta. Escríbelo cuando quieras y con gusto te ayudo. 💗`);
-      contadorsaludo[ctx.from] = 0;  // Mantener el contador
-      try {
-        // Agregar el usuario a la blacklist
+      contadorsaludo[ctx.from] = 2;
+    }
+      else {
+
+        contadorsaludo[ctx.from] = 0;
+       
+        try{
         blacklist.add(ctx.from);
         console.log(`${ctx.from} añadido a la blacklist.`);
 
